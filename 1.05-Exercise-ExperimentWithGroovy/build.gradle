@@ -18,15 +18,21 @@ task stringsAndTypes {
         println "Nice work abbreviating the task name"
 
         // TODO: Create a variable named foo and assign it the value 4.2
+        def foo = 4.2
 
         // TODO: Print the value and class of foo
+        println "${foo.class} value $foo"
+
 
         // TODO: Use string interpolation to print the square root of 127
         // HINT: http://docs.oracle.com/javase/7/docs/api/java/lang/Math.html
+        def squareIt = 127
+        println "Square root of $squareIt: ${Math.sqrt(squareIt)}"
 
         // TODO: Assign the current date to foo and print it, along with its type
         // HINT:
         // http://docs.oracle.com/javase/7/docs/api/java/util/package-summary.html
+
 
 
         // TODO: Use the `substring` method to extract my name from this string
