@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.udacity.gradle.builditbigger.library.R;
-import com.udacity.gradle.builditbigger.library.activity.consents.IntentConstants;
+import com.udacity.gradle.builditbigger.library.consents.IntentConstants;
 
 public class JokeTellerActivity extends AppCompatActivity {
 

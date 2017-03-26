@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger.consents;
+package com.udacity.gradle.builditbigger.consants;
 
 /**
  * Created by David on 3/24/17.

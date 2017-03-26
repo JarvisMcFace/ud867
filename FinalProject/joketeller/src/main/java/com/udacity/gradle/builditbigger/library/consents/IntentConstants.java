@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger.library.activity.consents;
+package com.udacity.gradle.builditbigger.library.consents;
 
 /**
  * Created by David on 3/24/17.

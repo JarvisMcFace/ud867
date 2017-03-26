@@ -1,15 +1,17 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builditbigger.actvitiy;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.JokeMachine;
-import com.udacity.gradle.builditbigger.consents.IntentConsents;
+import com.udacity.gradle.builditbigger.R;
+import com.udacity.gradle.builditbigger.consants.IntentConsents;
 import com.udacity.gradle.builditbigger.library.activity.JokeTellerActivity;
 
 
@@ -53,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, JokeTellerActivity.class);
         intent.putExtra(IntentConsents.EXTRA_TELL_JOKE, test);
         startActivity(intent);
-        Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
+        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "HELP"));
     }
 
 
