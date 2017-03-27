@@ -1,23 +1,21 @@
 package com.udacity.gradle.builditbigger.actvitiy;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.JokeMachine;
 import com.udacity.gradle.builditbigger.R;
-import com.udacity.gradle.builditbigger.consants.IntentConsents;
-import com.udacity.gradle.builditbigger.library.activity.JokeTellerActivity;
+import com.udacity.gradle.builditbigger.backend.myApi.model.Joke;
+
+import java.lang.ref.WeakReference;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements  EndpointsAsyncTask.Callback {
 
-
+    public static String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +46,27 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void tellJoke(View view) {
-        JokeMachine jokeMachine = new JokeMachine();
-        String test = jokeMachine.tellJoke();
+    @Override
+    public void progressIndicator(boolean enable) {
+        Log.d(TAG, "David: " + "progressIndicator() called with: enable = [" + enable + "]");
+    }
 
-        Intent intent = new Intent(this, JokeTellerActivity.class);
-        intent.putExtra(IntentConsents.EXTRA_TELL_JOKE, test);
-        startActivity(intent);
+    @Override
+    public void callBack(Joke joke) {
+        Log.d(TAG, "David: " + "callBack() called with: joke = [" + joke + "]");
+    }
+
+    public void tellJoke(View view) {
+
+
+//        Intent intent = new Intent(this, JokeTellerActivity.class);
+//        intent.putExtra(IntentConsents.EXTRA_TELL_JOKE, test);
+//        startActivity(intent);
       //  Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "HELP"));
+
+        WeakReference<EndpointsAsyncTask.Callback> weakReference = new WeakReference<EndpointsAsyncTask.Callback>(this);
+        EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask(weakReference);
+        endpointsAsyncTask.execute();
     }
 
 
