@@ -7,4 +7,5 @@ package com.udacity.gradle.builditbigger.consants;
 public class IntentConsents {
 
     public static final String EXTRA_TELL_JOKE = "com.udacity.gradle.builditbigger.tell.joke";
+    public static final String EXTRA_TELL_ANSWER = "com.udacity.gradle.builditbigger.tell.joke.answer";
 }

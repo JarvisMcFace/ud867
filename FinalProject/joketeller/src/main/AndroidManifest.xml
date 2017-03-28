@@ -3,7 +3,9 @@
     package="com.udacity.gradle.builditbigger.library">
 
     <application>
-        <activity android:name=".activity.JokeTellerActivity"></activity>
+        <activity
+            android:name=".activity.JokeTellerActivity"
+            android:theme="@style/CardView_Joke"/>
     </application>
 
 </manifest>

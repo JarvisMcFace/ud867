@@ -4,7 +4,11 @@ package com.example;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Joke {
+import java.io.Serializable;
+
+public class Joke implements Serializable {
+
+    private static final long serialVersionUID = -7189771588089165541L;
 
     @SerializedName("question")
     @Expose

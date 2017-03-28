@@ -1,5 +1,7 @@
 package com.udacity.gradle.builditbigger.actvitiy;
 
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,11 +11,13 @@ import android.view.View;
 
 import com.udacity.gradle.builditbigger.R;
 import com.udacity.gradle.builditbigger.backend.myApi.model.Joke;
+import com.udacity.gradle.builditbigger.consants.IntentConsents;
+import com.udacity.gradle.builditbigger.library.activity.JokeTellerActivity;
 
 import java.lang.ref.WeakReference;
 
 
-public class MainActivity extends AppCompatActivity implements  EndpointsAsyncTask.Callback {
+public class MainActivity extends AppCompatActivity implements EndpointsAsyncTask.Callback {
 
     public static String TAG = "MainActivity";
 
@@ -53,21 +57,15 @@ public class MainActivity extends AppCompatActivity implements  EndpointsAsyncTa
 
     @Override
     public void callBack(Joke joke) {
-        Log.d(TAG, "David: " + "callBack() called with: joke = [" + joke + "]");
+        Intent intent = new Intent(this, JokeTellerActivity.class);
+        intent.putExtra(IntentConsents.EXTRA_TELL_JOKE, joke.getQuestion());
+        intent.putExtra(IntentConsents.EXTRA_TELL_ANSWER, joke.getAnswer());
+        startActivity(intent);
     }
 
     public void tellJoke(View view) {
-
-
-//        Intent intent = new Intent(this, JokeTellerActivity.class);
-//        intent.putExtra(IntentConsents.EXTRA_TELL_JOKE, test);
-//        startActivity(intent);
-      //  Toast.makeText(this, test, Toast.LENGTH_SHORT).show();
-
         WeakReference<EndpointsAsyncTask.Callback> weakReference = new WeakReference<EndpointsAsyncTask.Callback>(this);
         EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask(weakReference);
         endpointsAsyncTask.execute();
     }
-
-
 }
